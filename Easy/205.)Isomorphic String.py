@@ -1,12 +1,5 @@
 def is_isomorphic(s: str, t: str):
-    match_dict = {}
-    for i in range(len(s)):
-        if s[i] in match_dict and match_dict[s[i]] != t[i]:
-            return False
-        if t[i] in match_dict:
-            return False
-        match_dict[s[i]] = t[i]
-    return True
+    return len(set(s)) == len(set(t)) == len(set(zip(s, t)))
 
 
 print(is_isomorphic("egg", "add"))
