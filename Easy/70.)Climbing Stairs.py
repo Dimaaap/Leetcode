@@ -4,8 +4,20 @@ def climb_stairs(n: int):
     Each time you can either climb 1 or 2 steps. In how many distinct
     ways can you climb to the top?
     """
-    stairs = [1, 2]
-    for i in range(2, n):
-        stairs.append(stairs[i - 1] + stairs[i - 2])
-    return stairs[n - 1]
+    memo = {}
+    return helper(n, memo)
+
+
+def helper(n, memo):
+    if n == 0 or n == 1:
+        return 1
+    if n not in memo:
+        memo[n] = helper(n - 1, memo) + helper(n - 2, memo)
+    return memo[n]
+
+
+print(climb_stairs(2))
+print(climb_stairs(3))
+print(climb_stairs(44))
+
 
