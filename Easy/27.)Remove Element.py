@@ -1,16 +1,12 @@
 def remove_element(nums: list[int], val: int):
-    counter = 0
-    i = 0
-    deleted_el = []
-    while i < len(nums):
+    i, j = 0, len(nums) - 1
+    while i <= j:
         if nums[i] == val:
-            deleted_el.append("_")
-            del nums[i]
+            nums[i], nums[j] = nums[j], nums[i]
+            j -= 1
         else:
-            counter += 1
             i += 1
-    nums += deleted_el
-    return counter
+    return i
 
 
 print(remove_element([3, 2, 2, 3], 3))

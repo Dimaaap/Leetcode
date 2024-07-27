@@ -1,17 +1,10 @@
 def remove_duplicates(nums: list[int]):
-    hash_table = {}
-    counter = 0
-    deleted_el = []
-    i = 0
-    while i < len(nums):
-        if nums[i] not in hash_table:
-            counter += 1
-            hash_table[nums[i]] = 1
-            i += 1
-        else:
-            del nums[i]
-            deleted_el.append("_")
-    return counter, nums + deleted_el
+    j = 1
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i - 1]:
+            nums[j] = nums[i]
+            j += 1
+    return j
 
 
 print(remove_duplicates([1, 1, 2]))
