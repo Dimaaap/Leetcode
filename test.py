@@ -1,14 +1,13 @@
-def maximum_number_of_string_pairs(words: list[str]) -> int:
-    stack = []
-    count = 0
-    for word in words:
-        if word[::-1] not in stack:
-            stack.append(word)
-        else:
-            count += 1
-    return count
+def minimum_operations(nums: list[int]) -> int:
+    counter = 0
+    while len(set(nums)) != 1:
+        min_num = min(i for i in nums if i != 0)
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[i] -= min_num
+        counter += 1
+    return counter
 
 
-print(maximum_number_of_string_pairs(["cd", "ac", "dc", "ca", "zz"]))
-print(maximum_number_of_string_pairs(["ab", "ba", "cc"]))
-print(maximum_number_of_string_pairs(["aa", "ab"]))
+print(minimum_operations([1, 5, 0, 3, 5]))
+print(minimum_operations([0]))
