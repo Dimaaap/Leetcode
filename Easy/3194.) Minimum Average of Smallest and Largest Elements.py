@@ -9,16 +9,12 @@ def minimum_average(nums: list[int]) -> float:
     Add (minElement + maxElement) / 2 to averages.
     Return the minimum element in averages.
     """
-    sorted_nums = sorted(nums)
-    averages = []
-    while sorted_nums:
-        min_el, max_el = sorted_nums[0], sorted_nums[-1]
-        avg = (min_el + max_el) / 2
-        averages.append(avg)
-        sorted_nums.pop()
-        sorted_nums.pop(0)
-    return min(averages)
-
+    nums = sorted(nums)
+    min_avg = max(nums)
+    while nums:
+        min_el, max_el = nums.pop(0), nums.pop(-1)
+        min_avg = min(min_avg, (min_el + max_el) / 2)
+    return min_avg
 
 
 print(minimum_average([7, 8, 3, 4, 15, 13, 4, 1]))
