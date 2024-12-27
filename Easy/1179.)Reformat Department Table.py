@@ -1,4 +1,4 @@
-##### SQL-QUERY #####
+
 
 """
 SELECT id,
