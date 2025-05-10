@@ -1,8 +1,7 @@
-def str_str(haystack: str, needle: str) -> int:
-    if needle in haystack:
-        return haystack.index(needle)
-    return -1
+def remove_trailing_zeros(num: str) -> str:
+    num = num.rstrip("0")
+    return num
 
 
-print(str_str("sadbutsad", "sad"))
-print(str_str("leetcode", "leeto"))
+print(remove_trailing_zeros("51230100"))
+print(remove_trailing_zeros("123"))
