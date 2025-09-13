@@ -1,12 +1,10 @@
-def count_complete_day_pair(numbers: list[int]) -> int:
+def count_prefixes(words: list[str], s: str) -> int:
     counter = 0
-    for i in range(len(numbers)):
-        for j in range(i + 1, len(numbers)):
-            if i != j:
-                if (numbers[i] + numbers[j]) % 24 == 0:
-                    counter += 1
+    for word in words:
+        if s.startswith(word):
+            counter += 1
     return counter
 
 
-print(count_complete_day_pair([12, 12, 30, 24, 24]))
-print(count_complete_day_pair([72, 24, 24, 3]))
+print(count_prefixes(["a", "b", "c", "ab", "bc", "abc"], "abc"))
+print(count_prefixes(["a", "a"], "aa"))
