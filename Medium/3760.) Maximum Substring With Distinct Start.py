@@ -1,0 +1,12 @@
+def max_distinct(s: str) -> int:
+    """
+    You are given a string s consisting of lowercase English letters.
+    Return an integer denoting the maximum number of substrings you can split s into such that each substring
+    starts with a distinct character (i.e., no two substrings start with the same character).
+
+    """
+    return len(set(s))
+
+
+print(max_distinct("abcd"))
+print(max_distinct("abab"))
