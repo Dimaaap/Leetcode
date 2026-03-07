@@ -1,4 +1,10 @@
 def check_if_exist(arr: list[int]):
+    """
+    Given an array arr of integers, check if there exist two indices i and j such that :
+        i != j
+        0 <= i, j < arr.length
+        arr[i] == 2 * arr[j]
+    """
     seen = set()
     for i in arr:
         if i in seen:
