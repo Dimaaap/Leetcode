@@ -10,5 +10,5 @@ def is_three(n: int):
     return counter == 3
 
 
-print(is_three(2))
+# print(is_three(2))
 print(is_three(4))
