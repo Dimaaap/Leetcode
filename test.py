@@ -1,16 +1,19 @@
-def is_palindrome(x: int) -> bool:
-    if x < 0:
-        return False
+def maximum_length_substring(s: str) -> int:
+    max_len = 0
 
-    new_num = x
-    palindrome = 0
-    while x:
-        x, res = divmod(x, 10)
-        palindrome = palindrome * 10 + res
+    for i in range(len(s)):
+        stack = [s[i]]
+        for j in range(i+1, len(s)):
+            if stack.count(s[j]) == 2:
+                max_len = max(max_len, len(stack))
+                stack = []
+                break
+            else:
+                stack.append(s[j])
+        if stack:
+            max_len = max(max_len, len(stack))
+    return max_len
 
-    return palindrome == new_num
 
-
-print(is_palindrome(121))
-print(is_palindrome(-121))
-print(is_palindrome(10))
+print(maximum_length_substring("bcbbbcba"))
+print(maximum_length_substring("aaaa"))
