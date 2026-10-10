@@ -1,15 +1,33 @@
-def two_sum(numbers: list[int], target: int) -> list[int]:
-    i, j = 0, len(numbers) - 1
+def is_valid(s: str) -> bool:
+    open_chars = ["(", "[", "{"]
+    valid_chars = {"(": ")", "[": "]", "{": "}"}
+    stack = []
+    i = 0
 
-    while i < j:
-        res = numbers[i] + numbers[j]
-        if res > target:
-            j -= 1
-        if res < target:
+    while i < len(s):
+        if not stack:
+            if s[i] not in open_chars:
+                return False
+            else:
+                stack.append(s[i])
+                i += 1
+                continue
+        if s[i] in open_chars:
+            stack.append(s[i])
             i += 1
-        if res == target:
-            return [i + 1, j + 1]
-    return []
+            continue
+        else:
+            last_char = stack[-1]
+            if valid_chars[last_char] != s[i]:
+                return False
+            else:
+                stack.pop()
+        i += 1
+    if stack:
+        return False
+    return True
 
 
-print(two_sum([1, 2, 3, 4], 3))
+print(is_valid("()"))
+print(is_valid("([{}])"))
+print(is_valid("[(])"))
